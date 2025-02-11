@@ -4,9 +4,9 @@ An educational series about the Sui ecosystem, taking place from February throug
 
 ## Content
 
-- [**Lesson One: What’s Sui? General Overview and Intro to Sui Network**](./lesson-1/)
-- [**Lesson Two: Making Your First Smart Contract Using Sui Move**](./lesson-2/)
-- [**Lesson Three: Intro to Sui Objects and Creating Your First NFT Project**](./lesson-3/)
+- [**Lesson One: What’s Sui? General Overview and Intro to Sui Network**](./lesson-1/) [done]
+- [**Lesson Two: Making Your First Smart Contract Using Sui Move**](./lesson-2/) [done]
+- [**Lesson Three: Intro to Sui Objects and Creating Your First NFT Project**](./lesson-3/) [done]
 - [**Lesson Four: Introduction to Dynamic Objects + Best Design Practices**](./lesson-4/)
 - [**Lesson Five: Project Showcase: On-Chain RPG - Part 1**](./lesson-5/)
 - [**Lesson Six: Project Showcase: On-Chain RPG - Part 2**](./lesson-6/)
