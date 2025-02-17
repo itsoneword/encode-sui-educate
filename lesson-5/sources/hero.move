@@ -153,7 +153,7 @@ module onchain_rpg::hero {
     /// Slay the `boar` with the `hero`'s sword, get experience.
     /// Aborts if the hero has 0 HP or is not strong enough to slay the boar
     public entry fun slay(
-        game: &GameInfo, hero: &mut Hero, boar: Boar, ctx: &TxContext
+        game: &GameInfo, hero: &mut Hero, boar: &mut Boar, ctx: &TxContext
     ) {
         check_id(game, hero.game_id);
         check_id(game, boar.game_id);
