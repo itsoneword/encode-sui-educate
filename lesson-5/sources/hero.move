@@ -153,7 +153,7 @@ module onchain_rpg::hero {
     /// Slay the `boar` with the `hero`'s sword, get experience.
     /// Aborts if the hero has 0 HP or is not strong enough to slay the boar
     public entry fun slay(
-        game: &GameInfo, hero: &mut Hero, boar: &mut Boar, ctx: &TxContext
+        game: &GameInfo, hero: &mut Hero, boar: Boar, ctx: &TxContext
     ) {
         check_id(game, hero.game_id);
         check_id(game, boar.game_id);
@@ -223,8 +223,8 @@ module onchain_rpg::hero {
         let Potion { id, potency, game_id: _ } = potion;
         object::delete(id);
         let new_hp = hero.hp + potency;
-        // cap hero's HP at MAX_HP to avoid int overflows
-        hero.hp = math::min(new_hp, MAX_HP)
+        // Updated min logic
+        hero.hp = if (new_hp > MAX_HP) { MAX_HP } else { new_hp };
     }
 
     /// Add `new_sword` to the hero's inventory and return the old sword
@@ -251,18 +251,16 @@ module onchain_rpg::hero {
         ctx: &mut TxContext
     ): Sword {
         let value = coin::value(&payment);
-        // ensure the user pays enough for the sword
         assert!(value >= MIN_SWORD_COST, EINSUFFICIENT_FUNDS);
-        // pay the admin for this sword
-        transfer::transfer(payment, game.admin);
+        // Updated to public_transfer
+        transfer::public_transfer(payment, game.admin);
 
-        // magic of the sword is proportional to the amount you paid, up to
-        // a max. one can only imbue a sword with so much magic
         let magic = (value - MIN_SWORD_COST) / MIN_SWORD_COST;
         Sword {
             id: object::new(ctx),
-            magic: math::min(magic, MAX_MAGIC),
-            strength: 1,
+            // Updated min logic
+            magic: if (magic > MAX_MAGIC) { MAX_MAGIC } else { magic },
+            strength: 1,цршс
             game_id: id(game)
         }
     }

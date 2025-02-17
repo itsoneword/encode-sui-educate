@@ -1,3 +1,6 @@
+# Finished cource and played with code, 15.2.25
+=-=-=-=-=-
+
 # Encode x Sui Educate
 
 An educational series about the Sui ecosystem, taking place from February through March 2023!
